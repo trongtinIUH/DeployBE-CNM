@@ -8,6 +8,7 @@ import vn.edu.iuh.fit.config.AwsConfig;
 @SpringBootApplication
 public class ChatAppBackendApplication {
 //deploy BE
+    //hehe
     public static void main(String[] args) {
         SpringApplication.run(ChatAppBackendApplication.class, args);
     }
