@@ -7,8 +7,7 @@ import vn.edu.iuh.fit.config.AwsConfig;
 @EnableCaching
 @SpringBootApplication
 public class ChatAppBackendApplication {
-//deploy BE
-    //hehe
+//deploy BEffew
     public static void main(String[] args) {
         SpringApplication.run(ChatAppBackendApplication.class, args);
     }
