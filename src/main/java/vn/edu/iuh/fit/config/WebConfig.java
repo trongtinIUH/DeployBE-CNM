@@ -15,7 +15,7 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:3000","https://deploybe-cnm-production.up.railway.app")  // Cho phép FE local
+                        .allowedOrigins("http://localhost:3000","https://deploybe-cnm-production.up.railway.app","https://aca3-109-237-64-222.ngrok-free.app")  // Cho phép FE local
                         .allowedMethods("*")
                         .allowedHeaders("*")
                         .allowCredentials(true);
