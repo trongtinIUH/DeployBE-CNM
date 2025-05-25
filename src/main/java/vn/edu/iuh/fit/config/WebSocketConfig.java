@@ -23,9 +23,12 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(myWebSocketHandler, "/ws").setAllowedOrigins("*");
-
+        registry
+                .addHandler(myWebSocketHandler, "/ws")
+                .setAllowedOrigins("*")
+                .withSockJS(); // ✅ Thêm vào để Railway proxy được WebSocket
     }
+
 
     @Bean
     public MyWebSocketHandler myWebSocketHandler(@Lazy MessageService messageService) {
