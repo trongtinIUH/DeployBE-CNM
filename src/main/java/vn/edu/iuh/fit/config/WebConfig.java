@@ -1,6 +1,7 @@
 package vn.edu.iuh.fit.config;
 
 
+import lombok.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -10,11 +11,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig {
     @Bean
     public WebMvcConfigurer corsConfigurer() {
+        String socketOrigin = System.getenv("web.socket");
         return new WebMvcConfigurer() {
+
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOrigins(
+                                socketOrigin,
                                 "http://localhost:3000",
                                 "http://192.168.100.18:3000",
                                 "https://0c94-109-237-64-222.ngrok-free.app" // FE chạy qua ngrok
