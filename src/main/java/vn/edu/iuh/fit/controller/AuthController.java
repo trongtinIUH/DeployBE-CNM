@@ -37,9 +37,9 @@ public class AuthController {
     private UserService userService;
 
 
-    private final String userPoolId = System.getenv("aws.cognito.userPoolId");
-    private final String clientId = System.getenv("aws.cognito.clientId");
-    private final String clientSecret = System.getenv("aws.cognito.clientSecret");
+    private final String userPoolId = System.getenv("AWS_COGNITO_USER_POOL_ID");
+    private final String clientId = System.getenv("AWS_COGNITO_CLIENT_ID");
+    private final String clientSecret = System.getenv("AWS_COGNITO_CLIENT_SECRET");
 
 
     private final Map<String, String> otpStore = new ConcurrentHashMap<>(); // Lưu OTP tạm thời
