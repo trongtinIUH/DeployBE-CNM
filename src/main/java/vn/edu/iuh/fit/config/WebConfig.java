@@ -17,8 +17,8 @@ public class WebConfig {
                 registry.addMapping("/**")
                         .allowedOrigins(
                                 socketOrigin,
-                                "http://localhost:3000",
-                                "https://deploybe-cnm-production.up.railway.app"
+                                "http://localhost:3000"
+
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
