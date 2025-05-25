@@ -22,7 +22,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-@CrossOrigin(origins = {"http://localhost:3000"}, allowCredentials = "true")
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -36,7 +35,7 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
-   // private final Dotenv dotenv = Dotenv.load();
+
     private final String userPoolId = System.getenv("aws.cognito.userPoolId");
     private final String clientId = System.getenv("aws.cognito.clientId");
     private final String clientSecret = System.getenv("aws.cognito.clientSecret");
