@@ -17,7 +17,7 @@ public class WebConfig {
                         .allowedOrigins(
                                 "http://localhost:3000",
                                 "http://192.168.100.18:3000",
-                                "https://2a01-109-237-64-222.ngrok-free.app" // FE chạy qua ngrok
+                                "https://0c94-109-237-64-222.ngrok-free.app" // FE chạy qua ngrok
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
