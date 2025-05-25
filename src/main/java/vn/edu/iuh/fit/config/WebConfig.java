@@ -5,26 +5,24 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+
 @Configuration
 public class WebConfig {
     @Bean
     public WebMvcConfigurer corsConfigurer() {
-        String socketOrigin = System.getenv("web.socket"); // lấy từ biến môi trường Railway
-
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOrigins(
-                                socketOrigin,
-                                "http://localhost:3000"
-
+                                "http://localhost:3000",
+                                "https://deploybe-cnm-production.up.railway.app"
                         )
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedMethods("*")
                         .allowedHeaders("*")
                         .allowCredentials(true);
             }
         };
     }
 }
-
