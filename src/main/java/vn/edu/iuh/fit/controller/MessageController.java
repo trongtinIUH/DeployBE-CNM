@@ -15,6 +15,7 @@ import vn.edu.iuh.fit.service.MessageService;
 import vn.edu.iuh.fit.service.impl.MessageServiceImpl;
 
 import java.util.List;
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 
 @RestController
 @RequestMapping("/messages")
