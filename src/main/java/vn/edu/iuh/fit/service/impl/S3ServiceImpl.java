@@ -32,10 +32,10 @@ import java.util.Date;
 
 @Service
 public class S3ServiceImpl implements S3Service {
-    private final Dotenv dotenv = Dotenv.load();
+    //private final Dotenv dotenv = Dotenv.load();
     private final S3Client s3Client;
-    private final String bucketName = dotenv.get("aws.s3.bucketName");
-    private final String region = dotenv.get("aws.region");
+    private final String bucketName = System.getenv("aws.s3.bucketName");
+    private final String region = System.getenv("aws.region");
 
     public S3ServiceImpl(S3Client s3Client) {
         this.s3Client = s3Client;
