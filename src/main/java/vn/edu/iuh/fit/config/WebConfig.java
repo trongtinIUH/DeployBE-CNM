@@ -18,7 +18,7 @@ public class WebConfig {
                         .allowedOrigins(
                                 socketOrigin,
                                 "http://localhost:3000",
-                                "https://your-fe.localtunnel.app"
+                                "https://deploybe-cnm-production.up.railway.app"
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
