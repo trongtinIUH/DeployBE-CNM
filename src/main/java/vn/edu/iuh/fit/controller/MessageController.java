@@ -5,17 +5,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import vn.edu.iuh.fit.exception.GroupException;
 import vn.edu.iuh.fit.model.DTO.ForwardRequest;
 import vn.edu.iuh.fit.model.DTO.UnreadMessagesCountDTO;
 import vn.edu.iuh.fit.model.DTO.request.ReactRequest;
-import vn.edu.iuh.fit.model.DTO.response.MessageResponse;
+import vn.edu.iuh.fit.model.DTO.response.BaseResponse;
 import vn.edu.iuh.fit.model.Message;
 import vn.edu.iuh.fit.repository.MessageRepository;
 import vn.edu.iuh.fit.service.MessageService;
 import vn.edu.iuh.fit.service.impl.MessageServiceImpl;
 
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 
 @RestController
 @RequestMapping("/messages")
@@ -134,8 +134,8 @@ public class MessageController {
     //tin nhắn trong group
     // Lấy tất cả tin nhắn trong nhóm
     @GetMapping("/group-messages")
-    public ResponseEntity<List<MessageResponse>> getMessagesInGroup(@RequestParam String groupId ) {
-        List<MessageResponse> groupMessages = service.getMessagesInGroup(groupId);
+    public ResponseEntity<List<Message>> getMessagesInGroup(@RequestParam String groupId ) {
+        List<Message> groupMessages = service.getMessagesInGroup(groupId);
         return ResponseEntity.ok(groupMessages);
     }
 
@@ -236,6 +236,28 @@ public class MessageController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
+    }
+
+    // Đánh dấu tin nhắn là ghim
+    @PutMapping("/{messageId}/pin/{userId}")
+    public ResponseEntity<BaseResponse<Message>> pinMessage(@PathVariable String messageId, @PathVariable String userId) throws GroupException {
+        Message pinnedMessage = messageServiceImpl.pinMessage(messageId, userId);
+        return ResponseEntity.ok(BaseResponse.<Message>builder()
+                .data(pinnedMessage)
+                .success(true)
+                .message("Ghim tin nhắn thành công")
+                .build());
+    }
+
+    // Huỷ bỏ ghim tin nhắn
+    @DeleteMapping("/{messageId}/unpin/{userId}")
+    public ResponseEntity<BaseResponse<Message>> unpinMessage(@PathVariable String messageId, @PathVariable String userId) throws GroupException {
+        Message unpinnedMessage = messageServiceImpl.unpinMessage(messageId, userId);
+        return ResponseEntity.ok(BaseResponse.<Message>builder()
+                .data(unpinnedMessage)
+                .success(true)
+                .message("Huỷ ghim tin nhắn thành công")
+                .build());
     }
 
 }

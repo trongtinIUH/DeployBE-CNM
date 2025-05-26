@@ -21,7 +21,6 @@ import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 
 @RestController
 @RequestMapping("/auth")
@@ -36,11 +35,9 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
-
     private final String userPoolId = System.getenv("AWS_COGNITO_USER_POOL_ID");
     private final String clientId = System.getenv("AWS_COGNITO_CLIENT_ID");
     private final String clientSecret = System.getenv("AWS_COGNITO_CLIENT_SECRET");
-
 
     private final Map<String, String> otpStore = new ConcurrentHashMap<>(); // Lưu OTP tạm thời
     private final Map<String, String> tempUserStore = new ConcurrentHashMap<>(); // Lưu thông tin tạm thời (password)

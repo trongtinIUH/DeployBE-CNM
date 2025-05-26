@@ -1,10 +1,9 @@
 package vn.edu.iuh.fit.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-//import vn.edu.iuh.fit.enums.ReactType;
 import vn.edu.iuh.fit.enums.ReactType;
+import vn.edu.iuh.fit.exception.GroupException;
 import vn.edu.iuh.fit.model.DTO.UnreadMessagesCountDTO;
-import vn.edu.iuh.fit.model.DTO.response.MessageResponse;
 import vn.edu.iuh.fit.model.Message;
 
 import java.util.List;
@@ -26,7 +25,7 @@ public interface MessageService {
     Message getLatestMessageBetweenUsers(String senderID, String receiverID);
     void saveReadMess(List<Message> messages);
     //lấy tin nhắn trong group
-    List<MessageResponse> getMessagesInGroup(String groupId);
+    List<Message> getMessagesInGroup(String groupId);
     List<UnreadMessagesCountDTO> getUnreadCountForAllFriends(String receiverID);
     void deleteMessagesBetweenUsers(String senderID, String receiverID);
     void recallMessage(String messageId, String senderID, String receiverID);
@@ -36,4 +35,9 @@ public interface MessageService {
     //hàm thêm react
     void addReactToMessage (String messageId, String userId, ReactType reactType);
     void removeReactFromMessage (String messageId, String userId);
+
+    //pin tin nhắn
+    Message pinMessage(String messageId, String userId) throws GroupException;
+    // hủy pin tin nhắn
+    Message unpinMessage(String messageId, String userId) throws GroupException;
 }

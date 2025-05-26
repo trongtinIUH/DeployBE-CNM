@@ -8,7 +8,10 @@ package vn.edu.iuh.fit.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import vn.edu.iuh.fit.service.S3Service;
 import vn.edu.iuh.fit.service.UserService;
@@ -21,8 +24,6 @@ import java.util.Map;
  * @version: 1.0
  * @created: 28-February-2025 4:30 PM
  */
-@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
-
 @RestController
 @RequestMapping("/s3")
 public class S3Controller {

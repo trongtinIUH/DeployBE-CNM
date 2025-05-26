@@ -18,7 +18,6 @@ import vn.edu.iuh.fit.model.UserGroup;
 import vn.edu.iuh.fit.service.GroupService;
 
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 
 @RestController
 @RequestMapping("/groups")
