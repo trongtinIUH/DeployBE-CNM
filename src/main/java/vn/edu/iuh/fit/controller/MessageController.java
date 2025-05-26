@@ -119,7 +119,7 @@ public class MessageController {
                 message.setIsRead(true); // Đánh dấu là đã đọc
             }
         }
-        System.out.println("Marked messages as read: " + messages);
+        System.out.println("Marked messages as read 123: " + messages);
         service.saveReadMess(messages); // 🔹 Lưu trạng thái vào DB
 
         return ResponseEntity.ok("Messages marked as read");
