@@ -177,7 +177,7 @@ public class MessageRepository {
                 .filter(message ->
                         (message.getReceiverID() != null && message.getSenderID() != null) &&
                                 ((message.getSenderID().equals(senderID) && message.getReceiverID().equals(receiverID)) ||
-                                (message.getSenderID().equals(receiverID) && message.getReceiverID().equals(senderID))))
+                                        (message.getSenderID().equals(receiverID) && message.getReceiverID().equals(senderID))))
                 .max(Comparator.comparing(m -> m.getSendDate().atZone(zoneId).toInstant())) // So sánh theo múi giờ Việt Nam
                 .orElse(null);
     }

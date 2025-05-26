@@ -94,7 +94,7 @@ public class GroupServiceImpl implements GroupService {
                 memberUser.getGroupIds().add(newGroup.getId());  // Thêm ID nhóm vào groupIds của thành viên
                 userRepository.save(memberUser);  // Cập nhật lại người dùng
             }
-            
+
             UserGroup memberGroup = new UserGroup();
             memberGroup.setUserId(memberId);
             memberGroup.setGroupId(newGroup.getId());
@@ -315,7 +315,7 @@ public class GroupServiceImpl implements GroupService {
             if (targetUser != null && targetUser.getGroupIds() != null) {
                 targetUser.getGroupIds().remove(groupId);
                 userRepository.save(targetUser);
-            }   
+            }
 
             // 4. Lấy danh sách thành viên trong nhóm để gửi thông báo
             List<UserGroup> members = groupRepository.getMembersOfGroup(groupId);
@@ -510,12 +510,12 @@ public class GroupServiceImpl implements GroupService {
 
                 // Gửi thông báo GROUP_UPDATE tới tất cả thành viên còn lại trong nhóm
 //                members = groupRepository.getMembersOfGroup(groupId); // Lấy lại danh sách thành viên sau khi xóa
-                    for (UserGroup member : members) {
-                        if (!member.getUserId().equals(currentLeaderId)) { // Không gửi lại cho người đã rời
-                            myWebSocketHandler.sendGroupUpdateNotification(member.getUserId(), groupId);
-                            System.out.println("Đã gửi thông báo GROUP_UPDATE tới người dùng " + member.getUserId() + " cho nhóm " + groupId);
-                        }
+                for (UserGroup member : members) {
+                    if (!member.getUserId().equals(currentLeaderId)) { // Không gửi lại cho người đã rời
+                        myWebSocketHandler.sendGroupUpdateNotification(member.getUserId(), groupId);
+                        System.out.println("Đã gửi thông báo GROUP_UPDATE tới người dùng " + member.getUserId() + " cho nhóm " + groupId);
                     }
+                }
             } catch (JsonProcessingException e) {
                 System.err.println("Lỗi khi gửi thông báo WebSocket: " + e.getMessage());
             }
