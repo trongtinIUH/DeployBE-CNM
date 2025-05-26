@@ -136,6 +136,7 @@ public class MessageController {
     // Lấy tất cả tin nhắn trong nhóm
     @GetMapping("/group-messages")
     public ResponseEntity<List<MessageResponse>> getMessagesInGroup(@RequestParam String groupId ) {
+        System.out.println("Fetching messages for group: " + groupId);
         List<MessageResponse> groupMessages = service.getMessagesInGroup(groupId);
         return ResponseEntity.ok(groupMessages);
     }
