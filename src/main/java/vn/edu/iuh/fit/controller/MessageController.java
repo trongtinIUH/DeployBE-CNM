@@ -119,7 +119,7 @@ public class MessageController {
                 message.setIsRead(true); // Đánh dấu là đã đọc
             }
         }
-        System.out.println("Marked messages as read 123: " + messages);
+        System.out.println("Marked messages as read: " + messages);
         service.saveReadMess(messages); // 🔹 Lưu trạng thái vào DB
 
         return ResponseEntity.ok("Messages marked as read");
@@ -136,7 +136,6 @@ public class MessageController {
     // Lấy tất cả tin nhắn trong nhóm
     @GetMapping("/group-messages")
     public ResponseEntity<List<MessageResponse>> getMessagesInGroup(@RequestParam String groupId ) {
-        System.out.println("Fetching messages for group: " + groupId);
         List<MessageResponse> groupMessages = service.getMessagesInGroup(groupId);
         return ResponseEntity.ok(groupMessages);
     }
