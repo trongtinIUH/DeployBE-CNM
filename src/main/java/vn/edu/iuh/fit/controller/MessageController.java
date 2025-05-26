@@ -132,7 +132,7 @@ public class MessageController {
         Message latestMessage = service.getLatestMessageBetweenUsers(senderID, receiverID);
         return latestMessage != null ? ResponseEntity.ok(latestMessage) : ResponseEntity.noContent().build();
     }
-    //tin nhắn trong group
+    //tin nhắn trong group hihi
     // Lấy tất cả tin nhắn trong nhóm
     @GetMapping("/group-messages")
     public ResponseEntity<List<MessageResponse>> getMessagesInGroup(@RequestParam String groupId ) {
